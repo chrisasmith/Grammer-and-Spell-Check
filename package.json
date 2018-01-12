@@ -1,0 +1,47 @@
+{
+  "name": "kioskui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "lite-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jquery": "^3.2.8",
+    "@types/node": "^8.0.6",
+    "axios": "^0.17.1",
+    "grunt": "^1.0.1",
+    "grunt-config": "^1.0.0",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-concat": "~0.4.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-cssmin": "^1.0.2",
+    "grunt-contrib-imagemin": "^1.0.1",
+    "grunt-contrib-jshint": "~0.10.0",
+    "grunt-contrib-qunit": "~0.5.2",
+    "grunt-contrib-uglify": "~0.5.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-newer": "^1.2.0",
+    "grunt-open": "^0.2.3",
+    "grunt-processhtml": "^0.4.1",
+    "grunt-typescript": "^0.8.0",
+    "grunt-uncss": "^0.6.1",
+    "gulp": "^3.9.1",
+    "gulp-typescript": "^3.2.1",
+    "lite-server": "^2.3.0",
+    "load-grunt-config": "^0.19.2"
+  },
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "es6-module-loader": "^0.17.11",
+    "jquery": "^3.2.1",
+    "plugin-typescript": "^7.0.6",
+    "systemjs": "^0.20.17",
+    "systemjs-plugin-css": "^0.1.35",
+    "typescript": "^2.4.2",
+    "utf8": "^3.0.0"
+  }
+}

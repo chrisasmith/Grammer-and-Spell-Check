@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html class="builder">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Grammer and Spelling</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="node_modules/systemjs/dist/system.js"></script>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <!-- build:css css/styles.min.css -->
+    <link rel="stylesheet" href="./css/styles.css" />
+    <!-- /build -->
+</head>
+
+<body>
+    <div id="builder" class="l-container-flex builder"></div>
+
+    <script>
+        //set our baseURL reference path
+        SystemJS.config({
+            transpiler: "ts",
+            baseURL: '/',
+            packages: {
+                "app": {
+                    "defaultExtension": "ts",
+                },
+                "ts": {
+                    "main": "lib/plugin.js"
+                },
+                "typescript": {
+                    "main": "lib/typescript.js",
+                    "meta": {
+                        "lib/typescript.js": {
+                            "exports": "ts"
+                        }
+                    }
+                },
+                './js': {
+                    defaultExtensions: 'js'
+                },
+                './**': {
+                    meta: {
+                        '*.css': {
+                            loader: 'css'
+                        }
+                    }
+                }
+            },
+            map: {
+                "ts": "./node_modules/plugin-typescript",
+                "typescript": "./node_modules/typescript/",
+                "jquery": "./node_modules/jquery/dist/jquery.min.js",
+                "text": "./js/plugins/text.js",
+                'json': './js/plugins/json.js',
+                'css': './node_modules/systemjs-plugin-css/css.js',
+                'bootstrapJs': './node_modules/bootstrap/dist/js/bootstrap.min.js',
+                'axios': './node_modules/axios/dist/axios.js',
+                'utf8': './node_modules/utf8/utf8.js'
+            },
+            meta: {
+                "*.json": {
+                    "loader": "json"
+                },
+                '*.css': {
+                    "loader": 'css'
+                }
+            }
+        });
+        //load your main js file
+        SystemJS.import('./js/main.js');
+    </script>
+</body>
+
+</html>
