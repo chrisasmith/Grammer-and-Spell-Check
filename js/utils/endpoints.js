@@ -2,9 +2,9 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var constants_1 = require("../constants/constants");
 var utf8Encoding = function (text) { return encodeURI(text); };
-exports.getGrammerSpellingUrl = function (fieldText) {
+exports.getGrammarSpellingUrl = function (fieldText) {
     console.log("Search String: ", fieldText);
-    var apiUrl = "https://api.textgears.com/check.php?key=" + constants_1.GRAMMER_API + "&text=" + utf8Encoding(fieldText);
+    var apiUrl = "https://api.textgears.com/check.php?key=" + constants_1.GRAMMAR_API + "&text=" + utf8Encoding(fieldText);
     console.log("apiUrl: ", apiUrl);
     return apiUrl;
 };

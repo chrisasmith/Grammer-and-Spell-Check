@@ -32,7 +32,7 @@ export class Content {
     }
 
     showSuggestionsMenu(offset, suggestion: string ) {
-        $('#js-menu-grammer').remove();
+        $('#js-menu-grammar').remove();
         const suggestions = SharedUtility.getSuggestion;
         let {better} = suggestions.filter((item) => {
             if(item.bad === suggestion)
@@ -41,7 +41,7 @@ export class Content {
 
         let content: JQuery = $('.js-statement');
             content.append(OptionsMenu.addMenu(suggestion, better));
-        this.positionMenu(offset, '#js-menu-grammer');
+        this.positionMenu(offset, '#js-menu-grammar');
     }
 
     positionMenu(offset, ele: string){

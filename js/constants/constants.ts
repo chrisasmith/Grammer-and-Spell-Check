@@ -1,1 +1,1 @@
-export const GRAMMER_API = "psLkqbw0DGfHeXM3";
+export const GRAMMAR_API = "psLkqbw0DGfHeXM3";

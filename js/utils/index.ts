@@ -4,4 +4,4 @@ export {SharedUtility} from './shared';
 export {EventUtility} from './events';
 export {ReadFile} from './readFile';
 export {Highlight} from './highlight';
-export {getGrammerSpellingUrl} from './endpoints';
+export {getGrammarSpellingUrl} from './endpoints';

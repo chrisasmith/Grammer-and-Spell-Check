@@ -28,7 +28,7 @@ var Content = (function () {
         });
     };
     Content.prototype.showSuggestionsMenu = function (offset, suggestion) {
-        $('#js-menu-grammer').remove();
+        $('#js-menu-grammar').remove();
         var suggestions = index_1.SharedUtility.getSuggestion;
         var better = suggestions.filter(function (item) {
             if (item.bad === suggestion)
@@ -36,7 +36,7 @@ var Content = (function () {
         })[0].better;
         var content = $('.js-statement');
         content.append(optionsMenu_1.OptionsMenu.addMenu(suggestion, better));
-        this.positionMenu(offset, '#js-menu-grammer');
+        this.positionMenu(offset, '#js-menu-grammar');
     };
     Content.prototype.positionMenu = function (offset, ele) {
         var left = offset.left, top = offset.top;

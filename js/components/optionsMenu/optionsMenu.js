@@ -26,13 +26,8 @@ var OptionsMenu = (function () {
         });
         return htmlOptsMenu;
     };
-    OptionsMenu.prototype.setSuggestion = function (errorText, suggestion) {
-        index_1.EventUtility.announceEvt(index_1.EventUtility.SET_SUGGESTION, {
-            errorText: errorText, suggestion: suggestion
-        });
-    };
     OptionsMenu.removeMenu = function () {
-        $('#js-menu-grammer').remove();
+        $('#js-menu-grammar').remove();
     };
     return OptionsMenu;
 }());

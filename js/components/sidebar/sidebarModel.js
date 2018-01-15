@@ -44,7 +44,7 @@ var Sidebar = (function () {
         this.checkDocument = function (docText) {
             return __awaiter(this, void 0, void 0, function () {
                 return __generator(this, function (_a) {
-                    return [2, axios_1.default.get(index_1.getGrammerSpellingUrl(docText))];
+                    return [2, axios_1.default.get(index_1.getGrammarSpellingUrl(docText))];
                 });
             });
         };

@@ -30,12 +30,7 @@ export class OptionsMenu {
         return htmlOptsMenu;
     }
 
-    setSuggestion(errorText: string, suggestion: string){
-        EventUtility.announceEvt(EventUtility.SET_SUGGESTION, {
-            errorText, suggestion
-        });
-    }
     static removeMenu() {
-        $('#js-menu-grammer').remove();
+        $('#js-menu-grammar').remove();
     }
 }

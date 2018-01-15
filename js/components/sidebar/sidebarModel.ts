@@ -1,4 +1,4 @@
-import {getGrammerSpellingUrl, SharedUtility, EventUtility, ReadFile} from "../../utils/index";
+import {getGrammarSpellingUrl, SharedUtility, EventUtility, ReadFile} from "../../utils/index";
 import axios from 'axios';
 import { Item } from '../index';
 
@@ -27,7 +27,7 @@ export class Sidebar {
         });
     }
     private checkDocument = async function (docText) {
-        return axios.get( getGrammerSpellingUrl( docText ) );
+        return axios.get( getGrammarSpellingUrl( docText ) );
     };
 
     private searchForErrors = async function ( text )  {

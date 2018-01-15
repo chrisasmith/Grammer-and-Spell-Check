@@ -13,5 +13,5 @@ exports.ReadFile = readFile_1.ReadFile;
 var highlight_1 = require("./highlight");
 exports.Highlight = highlight_1.Highlight;
 var endpoints_1 = require("./endpoints");
-exports.getGrammerSpellingUrl = endpoints_1.getGrammerSpellingUrl;
+exports.getGrammarSpellingUrl = endpoints_1.getGrammarSpellingUrl;
 //# sourceMappingURL=/Users/chrissmith/Desktop/G&S/utils/index.js.map
