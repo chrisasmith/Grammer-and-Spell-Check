@@ -1,22 +1,23 @@
+import {EventUtility} from "../../../utils/index";
+
 export class Item {
     constructor(public _suggestions){
     }
 
-    init(id: string){
-        let itemOptions:JQuery = $(id + ' .item-options');
+    init(id: string, errorText: string){
+        let itemOptions:JQuery = $(id + ' .js-item-options');
         //itemOptions.empty();
         this._suggestions.map(item => {
-            console.log('Item: ', item);
-            itemOptions.append(`
-            <div class="l-sidebar__navigation-item c-navigation__item">
-            <span class="l-sidebar__navigation-title c-navigation__title">${item}</span>
-            <div class="l-sidebar__navigation-buttons c-navigation__buttons">
-                <div class="btn btn-circle btn-xxs btn-ns btn-green">
-                    <i class="glyphicon glyphicon-plus"></i>
-                </div>
-            </div>
-        </div>`);
-        });
+            let htmlOption = $(require("./option.html!text"));
+            let optTitle = htmlOption.find('.js-opt-title').text(item);
+            itemOptions.append(htmlOption);
 
+            let suggestionBtn:JQuery = htmlOption.find('.js-btn');
+            suggestionBtn.click(function(errorText: string, suggestion: string){
+                EventUtility.announceEvt(EventUtility.SET_SUGGESTION, {
+                    errorText,  suggestion
+                });
+            }.bind(null, errorText, item));
+        });
     }
 }

@@ -2,8 +2,9 @@ import {HashTable} from "./hashTable";
 
 class SharedUtil {
     private hashTable: HashTable;
-    private _statementObj;//: {}[];
-    private _suggestions: {id:string, offset: number, length: number, bad: string, better: string[]} [] = [];
+    private _statementObj;
+    private _suggestions: {used:boolean, id:string, offset: number, length: number, bad: string, better: string[]} [] = [];
+    private _suggestionsHash;
     constructor(){
 
     }
@@ -16,18 +17,23 @@ class SharedUtil {
         this.setUpHashTable(statementArr);
         this._statementObj = statement
     }
-    get getSuggenstion(){
+    get getSuggestion(){
         return this._suggestions;
     }
     set setSuggestions(suggestions){
         this._suggestions = suggestions;
+    }
+    get suggestionsHash(){
+        return this._suggestionsHash;
+    }
+    set suggestionsHash(hash) {
+        this._suggestionsHash = hash;
     }
     // Fast look up by word but Not sure for a phrase....
     setUpHashTable(values){
         values.forEach( value => {
             this.hashTable.insert(value, value);
         });
-        console.log(this.hashTable);
     }
 }
 

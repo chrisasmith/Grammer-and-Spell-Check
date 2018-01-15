@@ -308,16 +308,11 @@ body {
     height: 100%
 }
 
-.l-sidebar__content * {
-    pointer-events: none
-}
+
 
 @media (min-width: 992px) {
     .l-sidebar__content {
         width: 300px
-    }
-    .l-sidebar__content * {
-        pointer-events: inherit
     }
 }
 
@@ -438,10 +433,22 @@ body {
     color: #fff;
     border-color: #fff
 }
+.o-button-toolbar:hover {
+    color: #337ab7;
+    border-color: #337ab7;
+}
 
 @supports (-ms-ime-align: auto) {
 }
-
+.app__title{
+    padding: 4px 15px;
+    font-weight: 600;
+    color: ##2e353e;
+    line-height: 30px;
+    font-size: 1.8rem;
+    border: 1px solid transparent;
+    position: relative;
+}
 .o-heading {
     position: relative;
     margin-bottom: 10px;
@@ -478,10 +485,10 @@ body {
 }
 
 .statement {
-    font-size: 1.5rem;
-}
-.bar-item {
-    margin-bottom: 2em;
+    margin: auto;
+    font-size: 2rem;
+    width: 70%;
+    line-height: 4rem;
 }
 
 .btn-green:not(.btn-line) {
@@ -545,37 +552,64 @@ body {
 .c-navigation__item {
     position: relative;
     padding: 0 20px 0 45px;
-    height: 45px;
-    line-height: 45px;
+    height: 30px;
     color: #858990;
     cursor: pointer;
     font-weight: 400;
 }
-
+.c-navigation__item:hover{
+    color: #fff;
+}
 .l-sidebar__navigation-item {
     margin: 0 -14px;
 }
-.c-navigation__item.is-active {
-    color: #fff;
-    background-color: #09f;
-}
 
-.c-navigation__item {
-    position: relative;
-    padding: 0 20px 0 45px;
-    height: 25px;
-    line-height: 25px;
-    color: #858990;
-    cursor: pointer;
-    font-weight: 400;
-}
 .l-sidebar__navigation-item {
     margin: 0 -14px;
 }
 .c-navigation__buttons {
     position: absolute;
-    right: 20px;
+    width: 70%;
+    height: inherit;
+    text-align: right;
+    /*right: 20px;
     top: 48%;
     -webkit-transform: translateY(-50%);
-    transform: translateY(-50%);
+    transform: translateY(-50%);*/
+}
+.inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+.inputfile + label {
+    font-size: 1.25em;
+    font-weight: 700;
+    color: white;
+    display: inline-block;
+}
+
+.grammarError {
+    background-color: #c6e5ff;
+    cursor: pointer;
+}
+
+.suggestion-title {
+    float: left;
+    width: 90%;
+}
+
+i {
+    font-size: 1.5rem;
+    padding-top: 2%;
+}
+.item-title {
+    padding-left: 1rem;
+    cursor: pointer;
+}
+.item-title:hover {
+    background-color: #5a5b5d;
 }

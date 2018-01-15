@@ -1,0 +1,81 @@
+.defaultSkin .mceMenu table {
+    font-size: 1.7rem;
+    background: #FFF;
+}
+.defaultSkin .mceMenuItemTitle a {
+    border: 0;
+    background: #EEE;
+    border-bottom: 1px solid #DDD;
+}
+
+.defaultSkin .mceMenu a {
+    position: relative;
+    padding: 3px 0 4px 0;
+}
+
+.defaultSkin .mceMenu a, .defaultSkin .mceMenu span, .defaultSkin .mceMenu {
+    display: block;
+}
+.defaultSkin .mceMenu .mceMenuItemEnabled a:hover, .defaultSkin .mceMenu .mceMenuItemActive {
+    background-color: #adffe9;
+}
+
+.defaultSkin .mceMenu a {
+    position: relative;
+    padding: 3px 2px 4px 2px;
+}
+
+.defaultSkin .mceMenu a, .defaultSkin .mceMenu span, .defaultSkin .mceMenu {
+    display: block;
+}
+
+.defaultSkin a:hover, .defaultSkin a:link, .defaultSkin a:visited, .defaultSkin a:active {
+    text-decoration: none;
+    font-weight: normal;
+    cursor: default;
+    color: #000;
+}
+.defaultSkin a:hover, .defaultSkin a:link, .defaultSkin a:visited, .defaultSkin a:active {
+    text-decoration: none;
+    font-weight: normal;
+    cursor: default;
+    color: #000;
+}
+.defaultSkin table {
+    direction: ltr;
+    background: transparent;
+}
+.defaultSkin .mceMenuItem td, .defaultSkin .mceMenuItem th {
+    line-height: normal;
+}
+
+.defaultSkin .mceMenu td {
+    height: 20px;
+}
+.defaultSkin table td {
+    vertical-align: middle;
+}
+.defaultSkin .mceMenu {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+    border: 1px solid #D4D0C8;
+    direction: ltr;
+}
+
+.defaultSkin table, .defaultSkin tbody, .defaultSkin a, .defaultSkin img, .defaultSkin tr, .defaultSkin div, .defaultSkin td, .defaultSkin iframe, .defaultSkin span, .defaultSkin *, .defaultSkin .mceText {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    white-space: nowrap;
+    text-decoration: none;
+    font-weight: normal;
+    cursor: default;
+    color: #000;
+    vertical-align: baseline;
+    width: auto;
+    border-collapse: separate;
+    text-align: left;
+}

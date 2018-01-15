@@ -8,7 +8,7 @@ class Main {
     public htmlSidebar = $(require("./components/sidebar/sidebar.html!text"));
     public htmlStageArea = $(require("./components/content/content.html!text"));
 
-    private builderArea:JQuery = $(".builder");
+    private builderArea:JQuery = $(".js-app-content");
 
     private headerArea:Header;
     private sidebar:Sidebar;
@@ -16,7 +16,6 @@ class Main {
 
     init(){
         return (header, sidebar, stage) => {
-            console.log('CALLED...')
             this.addHeader(header).addSidebar(sidebar).addStageArea(stage);
         }
     }

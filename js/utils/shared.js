@@ -22,7 +22,7 @@ var SharedUtil = (function () {
         enumerable: true,
         configurable: true
     });
-    Object.defineProperty(SharedUtil.prototype, "getSuggenstion", {
+    Object.defineProperty(SharedUtil.prototype, "getSuggestion", {
         get: function () {
             return this._suggestions;
         },
@@ -36,12 +36,21 @@ var SharedUtil = (function () {
         enumerable: true,
         configurable: true
     });
+    Object.defineProperty(SharedUtil.prototype, "suggestionsHash", {
+        get: function () {
+            return this._suggestionsHash;
+        },
+        set: function (hash) {
+            this._suggestionsHash = hash;
+        },
+        enumerable: true,
+        configurable: true
+    });
     SharedUtil.prototype.setUpHashTable = function (values) {
         var _this = this;
         values.forEach(function (value) {
             _this.hashTable.insert(value, value);
         });
-        console.log(this.hashTable);
     };
     return SharedUtil;
 }());

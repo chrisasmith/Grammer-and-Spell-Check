@@ -11,7 +11,7 @@ export class HashTable {
 
     private hash(key) {
         let total: number = 0;
-        for (var i = 0; i < key.length; i++) {
+        for (let i = 0; i < key.length; i++) {
             total += key.charCodeAt(i);
         }
         let bucket: number = total % this.numBuckets;
@@ -19,13 +19,13 @@ export class HashTable {
     }
 
     insert(key, value) {
-        var index: any = this.hash(key);
+        let index: any = this.hash(key);
         if (!this.buckets[index]) {
             this.buckets[index] = new HashNode(key, value);
         } else if (this.buckets[index].key === key) {
             this.buckets[index].value = value;
         } else {
-            var currentNode = this.buckets[index];
+            let currentNode = this.buckets[index];
             while (currentNode.next) {
                 if (currentNode.next.key === key) {
                     currentNode.next.value = value;

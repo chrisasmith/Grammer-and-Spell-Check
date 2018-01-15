@@ -40,7 +40,6 @@ var axios_1 = require("axios");
 var index_2 = require("../index");
 var Sidebar = (function () {
     function Sidebar() {
-        this.docLoaded = new Event('DOC_LOADED');
         this.barItems = [];
         this.checkDocument = function (docText) {
             return __awaiter(this, void 0, void 0, function () {
@@ -68,26 +67,40 @@ var Sidebar = (function () {
                 });
             });
         };
+        index_1.ReadFile.loadFile();
         var self = this;
-        $('.js-refresh').click(function () {
-            console.log("Clicking... Button", this);
+        index_1.EventUtility.addListener(index_1.EventUtility.FILE_LOADED, function (ele) {
+            index_1.SharedUtility.setStatement = ele.details.results;
+            $('.js-filename').text(ele.details.filename);
             self.sendImportedText();
+        });
+        index_1.EventUtility.addListener(index_1.EventUtility.SET_SUGGESTION, function (evt) {
+            console.log('Set Suggestions: ', evt);
+            var _a = evt.details, errorText = _a.errorText, suggestion = _a.suggestion;
+            var suggestions = self.currentSuggestions.filter(function (item) {
+                if (item.bad !== errorText)
+                    return item;
+            });
+            console.table(suggestions);
+            self.createSuggestions(suggestions);
+            self.currentSuggestions = suggestions;
         });
     }
     Sidebar.prototype.sendImportedText = function () {
         var _this = this;
         var textField = $('.js-text-field');
-        var grammerText = "My mother are a doctor, but my father is a angeneer. I has a gun.";
-        index_1.SharedUtility.setStatement = grammerText;
-        this.searchForErrors(grammerText).then(function (data) {
-            index_1.SharedUtility.setSuggestions = data;
+        this.searchForErrors(index_1.SharedUtility.getStatement).then(function (data) {
+            data.map(function (item) {
+                item.used = false;
+            });
+            index_1.SharedUtility.setSuggestions = _this.currentSuggestions = data;
             _this.createSuggestions(data);
-            index_1.EventUtility.announceEvt(_this.docLoaded);
+            index_1.EventUtility.announceEvt(index_1.EventUtility.DOC_PARSED);
         });
     };
     Sidebar.prototype.createSuggestions = function (data) {
         var _this = this;
-        var errorDiv = $('.errors');
+        var errorDiv = $('.js-errors');
         errorDiv.empty();
         data.map(function (item, idx) {
             var htmlItem = $(require("./barItem/item.html!text"));
@@ -97,7 +110,13 @@ var Sidebar = (function () {
             var title = $(htmlItem).find('.title');
             title.html(item.bad);
             _this.barItems[idx] = new index_2.Item(item.better);
-            _this.barItems[idx].init("#" + id);
+            _this.barItems[idx].init("#" + id, item.bad);
+            var ignoreBtn = htmlItem.find('.js-ignore-suggestion');
+            ignoreBtn.click(function () {
+                index_1.EventUtility.announceEvt(index_1.EventUtility.SET_SUGGESTION, {
+                    errorText: $(this).text().trim(), suggestion: $(this).text().trim()
+                });
+            });
         });
     };
     return Sidebar;

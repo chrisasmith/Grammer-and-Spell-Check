@@ -1,16 +1,30 @@
-import {getGrammerSpellingUrl, SharedUtility, EventUtility} from "../../utils/index";
+import {getGrammerSpellingUrl, SharedUtility, EventUtility, ReadFile} from "../../utils/index";
 import axios from 'axios';
 import { Item } from '../index';
 
 export class Sidebar {
-    private docLoaded = new Event('DOC_LOADED');
     private barItems = [];
+    private currentSuggestions;
     constructor() {
+        ReadFile.loadFile();
         const self: Sidebar = this;
-       $('.js-refresh').click(function() {
-           console.log("Clicking... Button", this);
+        EventUtility.addListener(EventUtility.FILE_LOADED, function(ele){
+           SharedUtility.setStatement = ele.details.results;
+           $('.js-filename').text(ele.details.filename);
            self.sendImportedText();
-       });
+        });
+
+        EventUtility.addListener(EventUtility.SET_SUGGESTION, function(evt){
+            console.log('Set Suggestions: ', evt);
+            let {errorText, suggestion} = evt.details;
+            let suggestions = self.currentSuggestions.filter((item) => {
+                if(item.bad !== errorText)
+                    return item;
+            });
+            console.table(suggestions);
+            self.createSuggestions(suggestions);
+            self.currentSuggestions = suggestions;
+        });
     }
     private checkDocument = async function (docText) {
         return axios.get( getGrammerSpellingUrl( docText ) );
@@ -28,18 +42,18 @@ export class Sidebar {
 
     sendImportedText() {
         const textField = $('.js-text-field');
-        const grammerText = "My mother are a doctor, but my father is a angeneer. I has a gun."; //textField.value;
+        this.searchForErrors(SharedUtility.getStatement).then((data) =>{
+            data.map( (item) => {
+                item.used = false;
+            });
 
-        SharedUtility.setStatement = grammerText;
-
-        this.searchForErrors(grammerText).then((data) =>{
-            SharedUtility.setSuggestions = data;
+            SharedUtility.setSuggestions = this.currentSuggestions = data;
             this.createSuggestions(data);
-            EventUtility.announceEvt(this.docLoaded);
+            EventUtility.announceEvt(EventUtility.DOC_PARSED);
         });
     }
     createSuggestions(data){
-        const errorDiv:JQuery = $('.errors');
+        const errorDiv:JQuery = $('.js-errors');
         errorDiv.empty();
         data.map((item, idx) => {
             let htmlItem = $(require("./barItem/item.html!text"));
@@ -51,9 +65,14 @@ export class Sidebar {
             let title:JQuery = $(htmlItem).find('.title');
                 title.html(item.bad);
             this.barItems[idx] = new Item(item.better);
-            this.barItems[idx].init(`#${id}`);
+            this.barItems[idx].init(`#${id}`, item.bad);
+
+            let ignoreBtn:JQuery = htmlItem.find('.js-ignore-suggestion');
+            ignoreBtn.click(function(){
+                EventUtility.announceEvt(EventUtility.SET_SUGGESTION, {
+                    errorText: $(this).text().trim(), suggestion: $(this).text().trim()
+                });
+            });
         })
     }
 }
-
-

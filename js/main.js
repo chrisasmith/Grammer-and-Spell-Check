@@ -8,12 +8,11 @@ var Main = (function () {
         this.htmlHeader = $(require("./components/header/header.html!text"));
         this.htmlSidebar = $(require("./components/sidebar/sidebar.html!text"));
         this.htmlStageArea = $(require("./components/content/content.html!text"));
-        this.builderArea = $(".builder");
+        this.builderArea = $(".js-app-content");
     }
     Main.prototype.init = function () {
         var _this = this;
         return function (header, sidebar, stage) {
-            console.log('CALLED...');
             _this.addHeader(header).addSidebar(sidebar).addStageArea(stage);
         };
     };
